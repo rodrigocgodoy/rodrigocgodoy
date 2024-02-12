@@ -1,5 +1,18 @@
 {
   "index": {
     "title": "Hello world!"
+  },
+  "command": {
+    "search": "Type to search",
+    "search-empty": "No results found.",
+    "language-heading": "Language",
+    "language-en": "English",
+    "language-pt": "Portuguese",
+    "theme-heading": "Theme",
+    "theme-light": "Light",
+    "theme-dark": "Dark",
+    "theme-system": "System",
+    "latest-projects-heading": "Lastest projects",
+    "socials-heading": "Socials"
   }
 }

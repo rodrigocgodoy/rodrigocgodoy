@@ -1,5 +1,18 @@
 {
   "index": {
     "title": "Olá mundo!"
+  },
+  "command": {
+    "search": "Digite para pesquisar",
+    "search-empty": "Não foram encontrados resultados.",
+    "language-heading": "Idioma",
+    "language-en": "Inglês",
+    "language-pt": "Português",
+    "theme-heading": "Tema",
+    "theme-light": "Claro",
+    "theme-dark": "Escuro",
+    "theme-system": "Sistema",
+    "latest-projects-heading": "Últimos projetos",
+    "socials-heading": "Redes Sociais"
   }
 }
