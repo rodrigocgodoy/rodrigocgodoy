@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 
 import { ThemeProvider } from '@/components/theme-provider'
 import { CommandDialog } from '@/components/command-dialog'
+import { Footer } from '@/components/footer'
 
 export const metadata: Metadata = {
   title: 'Rodrigo Godoy',
@@ -40,6 +41,7 @@ export default function LocaleLayout({
           >
             <CommandDialog />
             {children}
+            <Footer />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
