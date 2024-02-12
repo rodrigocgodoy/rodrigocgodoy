@@ -14,5 +14,8 @@
     "theme-system": "Sistema",
     "latest-projects-heading": "Últimos projetos",
     "socials-heading": "Redes Sociais"
+  },
+  "about": {
+    "role": "Desenvolvedor Front-end"
   }
 }

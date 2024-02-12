@@ -14,5 +14,8 @@
     "theme-system": "System",
     "latest-projects-heading": "Lastest projects",
     "socials-heading": "Socials"
+  },
+  "about": {
+    "role": "Front-end Developer"
   }
 }
