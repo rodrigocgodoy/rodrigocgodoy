@@ -124,7 +124,7 @@ export function CommandDialog() {
         {
           name: 'X (Twitter)',
           icon: <TwitterLogoIcon />,
-          onSelect: () => openLink('https://twitter.com/rodrigo_godoy'),
+          onSelect: () => openLink('https://twitter.com/rodrigogodoy__'),
         },
       ],
     },
@@ -134,9 +134,10 @@ export function CommandDialog() {
     <>
       <button
         onClick={() => setOpen((open) => !open)}
-        className="absolute left-5 bottom-5 pointer select-none h-16 w-16 flex justify-center items-center border rounded-full font-mono font-medium text-slate-50 dark:text-slate-950 bg-slate-950 dark:bg-slate-50"
+        className="fixed left-5 bottom-5 gap-1 pointer select-none h-16 w-16 flex justify-center items-center border rounded-full font-mono font-medium text-slate-50 dark:text-slate-950 bg-slate-950 dark:bg-slate-50"
       >
         <span className="text-xl">⌘</span>
+        <span className="text-sm">+</span>
         <span className="text-sm">K</span>
       </button>
       <CommandD open={open} onOpenChange={setOpen}>
