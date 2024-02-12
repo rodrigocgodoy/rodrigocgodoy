@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ThemeProvider } from '@/components/theme-provider'
+import { CommandDialog } from '@/components/command-dialog'
 
 const inter = Inter({ subsets: ['latin'], display: 'swap' })
 
@@ -26,6 +27,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <CommandDialog />
           {children}
         </ThemeProvider>
       </body>
