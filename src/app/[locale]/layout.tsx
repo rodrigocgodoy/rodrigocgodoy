@@ -13,6 +13,8 @@ export const metadata: Metadata = {
   description: 'Site Rodrigo Godoy',
 }
 
+export const dynamic = 'force-static'
+
 export default function LocaleLayout({
   children,
   params: { locale },
@@ -50,5 +52,5 @@ export default function LocaleLayout({
 }
 
 export async function generateStaticParams() {
-  return [{ lang: 'pt-BR' }, { lang: 'en' }]
+  return ['pt-BR', 'en'].map((locale) => ({ locale }))
 }
