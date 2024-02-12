@@ -1,8 +1,17 @@
+// eslint-disable-next-line camelcase
+import { unstable_setRequestLocale } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
-export default function Home() {
+export const dynamic = 'force-static'
+
+export default function Home({
+  params: { locale },
+}: Readonly<{
+  params: { locale: string }
+}>) {
+  unstable_setRequestLocale(locale)
   const t = useTranslations('about')
 
   return (
