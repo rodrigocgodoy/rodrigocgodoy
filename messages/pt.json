@@ -16,6 +16,12 @@
     "socials-heading": "Redes Sociais"
   },
   "about": {
-    "role": "Desenvolvedor Front-end"
+    "role": "Desenvolvedor Front-end",
+    "title": "Sobre mim",
+    "download": "Baixar currículo",
+    "part1": "Algo sobre mim parte 1",
+    "part2": "Algo sobre mim parte 2",
+    "part3": "Algo sobre mim parte 3",
+    "download-success": "Baixado com sucesso"
   }
 }

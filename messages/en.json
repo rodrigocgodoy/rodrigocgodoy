@@ -16,6 +16,12 @@
     "socials-heading": "Socials"
   },
   "about": {
-    "role": "Front-end Developer"
+    "role": "Front-end Developer",
+    "title": "About me",
+    "download": "Download resume",
+    "part1": "Something about me part 1",
+    "part2": "Something about me part 2",
+    "part3": "Something about me part 3",
+    "download-success": "Downloaded successfully"
   }
 }
