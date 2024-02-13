@@ -52,5 +52,5 @@ export default function LocaleLayout({
 }
 
 export async function generateStaticParams() {
-  return ['pt-BR', 'en'].map((locale) => ({ locale }))
+  return ['pt', 'en'].map((locale) => ({ locale }))
 }
