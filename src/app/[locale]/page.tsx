@@ -3,8 +3,7 @@ import { unstable_setRequestLocale } from 'next-intl/server'
 import { useTranslations } from 'next-intl'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-
-export const dynamic = 'force-static'
+import { Stack } from '@/components/stack'
 
 export default function Home({
   params: { locale },
@@ -15,8 +14,8 @@ export default function Home({
   const t = useTranslations('about')
 
   return (
-    <main className="flex min-h-screen mx-auto my-20 max-w-2xl px-6">
-      <div className="flex gap-3 item-center">
+    <main className="flex flex-col gap-10 min-h-screen h-full mx-auto my-20 max-w-2xl px-6">
+      <div className="flex gap-3 item-center select-none">
         <Avatar className="h-14 w-14 border border-gray-950 dark:border-gray-50">
           <AvatarImage src="/logo.jpg" alt="Rodrigo Godoy" />
           <AvatarFallback>RG</AvatarFallback>
@@ -30,6 +29,7 @@ export default function Home({
           </h2>
         </div>
       </div>
+      <Stack />
     </main>
   )
 }
