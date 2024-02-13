@@ -1,5 +1,8 @@
 import { ArrowRightIcon } from '@radix-ui/react-icons'
-import { Button } from './ui/button'
+
+import { buttonVariants } from './ui/button'
+import { Link } from '@/lib/navigation'
+import { cn } from '@/lib/cn'
 
 interface ProjectsProps {
   projects:
@@ -18,10 +21,13 @@ export function Projects({ projects }: ProjectsProps) {
 
       <div className="flex flex-col gap-3 mt-3">
         {projects?.map((project) => (
-          <Button
+          <Link
+            className={cn(
+              buttonVariants({ variant: 'ghost' }),
+              'flex justify-between gap-3 h-auto -mx-3.5 group',
+            )}
             key={project.title}
-            className="flex justify-between gap-3 h-auto -mx-3.5 group"
-            variant="ghost"
+            href={`/projects/${project.slug}`}
           >
             <div className="flex flex-col items-start">
               <h3 className="text-slate-950 dark:text-gray-300 font-medium">
@@ -32,7 +38,7 @@ export function Projects({ projects }: ProjectsProps) {
               </p>
             </div>
             <ArrowRightIcon className="size-4" />
-          </Button>
+          </Link>
         ))}
       </div>
     </section>
