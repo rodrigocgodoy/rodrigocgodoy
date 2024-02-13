@@ -4,6 +4,7 @@ import { unstable_setRequestLocale } from 'next-intl/server'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 import { ThemeProvider } from '@/components/theme-provider'
 import { CommandDialog } from '@/components/command-dialog'
@@ -46,6 +47,7 @@ export default function LocaleLayout({
             {children}
             <Footer />
             <Analytics />
+            <SpeedInsights />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
