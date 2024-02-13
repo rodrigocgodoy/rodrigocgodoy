@@ -53,7 +53,7 @@ interface GetDataReturn {
   resume: string
 }
 
-export async function getData({
+async function getData({
   locale,
 }: GetDataProps): Promise<GetDataReturn[] | null> {
   try {

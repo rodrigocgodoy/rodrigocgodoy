@@ -110,7 +110,7 @@ interface GetDataReturn {
   content: string
 }
 
-export async function getData({
+async function getData({
   slug,
   locale,
 }: GetDataProps): Promise<GetDataReturn | null> {
