@@ -9,6 +9,7 @@ import { SpeedInsights } from '@vercel/speed-insights/next'
 import { ThemeProvider } from '@/components/theme-provider'
 import { CommandDialog } from '@/components/command-dialog'
 import { Footer } from '@/components/footer'
+import { Toaster } from '@/components/ui/sonner'
 
 export const metadata: Metadata = {
   title: 'Rodrigo Godoy',
@@ -43,9 +44,11 @@ export default function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <CommandDialog />
             {children}
             <Footer />
+
+            <CommandDialog />
+            <Toaster />
             <Analytics />
             <SpeedInsights />
           </ThemeProvider>
