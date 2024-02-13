@@ -23,5 +23,8 @@
     "part2": "Something about me part 2",
     "part3": "Something about me part 3",
     "download-success": "Downloaded successfully"
+  },
+  "footer": {
+    "copyright": "© {year} Rodrigo Correia Godoy. All rights reserved."
   }
 }
