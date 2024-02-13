@@ -16,6 +16,8 @@ const config = {
       backgroundImage: {
         'fade-gradient':
           'linear-gradient(90deg, rgba(9, 9, 11, 1), transparent 20%, transparent 80%, rgba(9, 9, 11, 1))',
+        'fade-gradient-slate-50':
+          'linear-gradient(90deg, rgba(248, 250, 252, 1), transparent 20%, transparent 80%, rgba(248, 250, 252, 1))',
       },
       keyframes: {
         'accordion-down': {

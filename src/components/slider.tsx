@@ -28,7 +28,7 @@ export function Slider({ children, pauseOnHover, className }: SliderProps) {
           {children}
         </div>
       ))}
-      <div className="pointer-events-none absolute inset-0 bg-fade-gradient" />
+      <div className="pointer-events-none absolute inset-0 bg-fade-gradient-slate-50 dark:bg-fade-gradient" />
     </div>
   )
 }
