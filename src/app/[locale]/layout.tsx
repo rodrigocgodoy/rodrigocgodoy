@@ -3,6 +3,7 @@ import { NextIntlClientProvider, useMessages } from 'next-intl'
 import { unstable_setRequestLocale } from 'next-intl/server'
 import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react'
 
 import { ThemeProvider } from '@/components/theme-provider'
 import { CommandDialog } from '@/components/command-dialog'
@@ -44,6 +45,7 @@ export default function LocaleLayout({
             <CommandDialog />
             {children}
             <Footer />
+            <Analytics />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
