@@ -19,9 +19,10 @@
     "role": "Desenvolvedor Front-end",
     "title": "Sobre mim",
     "download": "Baixar currículo",
-    "part1": "Algo sobre mim parte 1",
-    "part2": "Algo sobre mim parte 2",
-    "part3": "Algo sobre mim parte 3",
+    "part1": "Olá! Eu sou Rodrigo Correia Godoy, um entusiasta da tecnologia com 24 anos, baseado em Cajamar-SP. Além de ser um orgulhoso marido e pai de uma linda filha, também sou um profissional formado em Análise e Desenvolvimento de Sistemas pela Faculdade Impacta.",
+    "part2": "Com uma trajetória de 5/6 anos na área, concentro minha expertise como desenvolvedor front-end, especializado em tecnologias como ReactJS e Next.js. Ao longo da minha carreira, tive o prazer de trabalhar em projetos desafiadores, nos quais pude aprimorar minhas habilidades e contribuir para a criação de experiências digitais envolventes.",
+    "part3": "A paixão pelo desenvolvimento front-end vai além do código. Estou constantemente atualizado com as últimas tendências do setor para garantir que meus projetos estejam alinhados com as melhores práticas e ofereçam uma experiência de usuário excepcional.",
+    "part4": "Meu objetivo é continuar explorando novas tecnologias, enfrentar desafios empolgantes e contribuir para o crescimento contínuo do mundo digital. Seja bem-vindo ao meu portfólio, onde você pode explorar alguns dos projetos nos quais tive a oportunidade de deixar minha marca. Estou ansioso para conectar-me com outros profissionais apaixonados e colaborar em projetos inovadores. Vamos criar algo incrível juntos!",
     "download-success": "Baixado com sucesso"
   },
   "footer": {

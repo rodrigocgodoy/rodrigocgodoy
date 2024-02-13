@@ -19,9 +19,10 @@
     "role": "Front-end Developer",
     "title": "About me",
     "download": "Download resume",
-    "part1": "Something about me part 1",
-    "part2": "Something about me part 2",
-    "part3": "Something about me part 3",
+    "part1": "Hello! I'm Rodrigo Correia Godoy, a 24 year old technology enthusiast, based in Cajamar-SP. In addition to being a proud husband and father of a beautiful daughter, I am also a professional with a degree in Systems Analysis and Development from Faculdade Impacta.",
+    "part2": "With a 5/6 year history in the area, I focus my expertise as a front-end developer, specializing in technologies such as ReactJS and Next.js. Throughout my career, I have had the pleasure of working on challenging projects, where I was able to improve my skills and contribute to the creation of engaging digital experiences.",
+    "part3": "The passion for front-end development goes beyond code. I am constantly up to date with the latest industry trends to ensure my projects are aligned with best practices and deliver an exceptional user experience.",
+    "part4": "My goal is to continue exploring new technologies, face exciting challenges and contribute to the continued growth of the digital world. Welcome to my portfolio, where you can explore some of the projects I've had the opportunity to make my mark on. I look forward to connecting with other passionate professionals and collaborating on innovative projects. Let's create something amazing together!",
     "download-success": "Downloaded successfully"
   },
   "footer": {

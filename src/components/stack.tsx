@@ -2,8 +2,6 @@
 
 import Image from 'next/image'
 
-import { stacks } from '@/data/stacks'
-
 import { Slider } from './slider'
 import {
   Tooltip,
@@ -11,11 +9,13 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from './ui/tooltip'
+import { stacks } from '@/data/stacks'
 
 export function Stack() {
   return (
     <div className="flex flex-col rounded-lg">
-      <h2 className="text-gray-300 font-medium">Stack</h2>
+      <h2 className="text-slate-950 dark:text-gray-300 font-medium">Stack</h2>
+
       <Slider pauseOnHover>
         {stacks.map(({ name, image }) => (
           <TooltipProvider key={name}>
