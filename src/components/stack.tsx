@@ -13,8 +13,8 @@ import { stacks } from '@/data/stacks'
 
 export function Stack() {
   return (
-    <div className="flex flex-col rounded-lg">
-      <h2 className="text-slate-950 dark:text-gray-300 font-medium">Stack</h2>
+    <section className="flex flex-col rounded-lg">
+      <h2 className="text-slate-950 dark:text-gray-300 font-bold">Stack</h2>
 
       <Slider pauseOnHover>
         {stacks.map(({ name, image }) => (
@@ -33,6 +33,6 @@ export function Stack() {
           </TooltipProvider>
         ))}
       </Slider>
-    </div>
+    </section>
   )
 }

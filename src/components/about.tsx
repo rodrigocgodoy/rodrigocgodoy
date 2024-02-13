@@ -10,15 +10,15 @@ export function About() {
   const t = useTranslations('about')
 
   return (
-    <div className="flex flex-col gap-4 items-start">
-      <h2 className="text-slate-950 dark:text-gray-300 font-medium">
+    <section className="flex flex-col gap-4 items-start">
+      <h2 className="text-slate-950 dark:text-gray-300 font-bold">
         {t('title')}
       </h2>
 
-      <p className="text-slate-900 dark:text-gray-100">{t('part1')}</p>
-      <p className="text-slate-900 dark:text-gray-100">{t('part2')}</p>
-      <p className="text-slate-900 dark:text-gray-100">{t('part3')}</p>
-      <p className="text-slate-900 dark:text-gray-100">{t('part4')}</p>
+      <p className="text-slate-900 dark:text-gray-300">{t('part1')}</p>
+      <p className="text-slate-900 dark:text-gray-300">{t('part2')}</p>
+      <p className="text-slate-900 dark:text-gray-300">{t('part3')}</p>
+      <p className="text-slate-900 dark:text-gray-300">{t('part4')}</p>
 
       <a
         className={cn(buttonVariants({ variant: 'outline' }), 'gap-3')}
@@ -29,6 +29,6 @@ export function About() {
         <DownloadIcon />
         {t('download')}
       </a>
-    </div>
+    </section>
   )
 }
