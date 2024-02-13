@@ -27,12 +27,12 @@ import tailwindcss from '../../public/image/tailwindcss.svg'
 import typescript from '../../public/image/typescript.svg'
 import vitest from '../../public/image/vitest.svg'
 
-type Stacks = Array<{
+interface Stack {
   name: string
   image: StaticImageData
-}>
+}
 
-export const stacks: Stacks = [
+export const stacks: Stack[] = [
   {
     name: 'ReactJS',
     image: reactjs,

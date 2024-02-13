@@ -24,14 +24,14 @@ import {
 } from '@/components/ui/command'
 import { usePathname, useRouter } from '@/lib/navigation'
 
-type Groups = Array<{
+interface Group {
   heading: string
-  actions: Array<{
+  items: {
     name: string
     icon: JSX.Element
     onSelect: () => void | Promise<void | boolean>
-  }>
-}>
+  }[]
+}
 
 export function CommandDialog() {
   const [open, setOpen] = React.useState(false)
@@ -57,10 +57,10 @@ export function CommandDialog() {
     window.open(url, '_blank')
   }, [])
 
-  const groups: Groups = [
+  const groups: Group[] = [
     {
       heading: t('language-heading'),
-      actions: [
+      items: [
         {
           name: t('language-en'),
           icon: <GlobeIcon />,
@@ -75,7 +75,7 @@ export function CommandDialog() {
     },
     {
       heading: t('theme-heading'),
-      actions: [
+      items: [
         {
           name: t('theme-light'),
           icon: <SunIcon />,
@@ -95,7 +95,7 @@ export function CommandDialog() {
     },
     // {
     //   heading: t('latest-projects-heading'),
-    //   actions: [
+    //   items: [
     //     {
     //       name: 'Mary Bin',
     //       icon: <Wheat />,
@@ -105,7 +105,7 @@ export function CommandDialog() {
     // },
     {
       heading: t('socials-heading'),
-      actions: [
+      items: [
         {
           name: 'GitHub',
           icon: <GitHubLogoIcon />,
@@ -134,7 +134,7 @@ export function CommandDialog() {
     <>
       <button
         onClick={() => setOpen((open) => !open)}
-        className="fixed left-5 bottom-5 gap-1 pointer select-none h-16 w-16 flex justify-center items-center border rounded-full font-mono font-medium text-slate-50 dark:text-slate-950 bg-slate-950 dark:bg-slate-50"
+        className="fixed left-5 bottom-5 gap-1 pointer select-none h-16 w-16 flex justify-center items-center border rounded-full font-mono font-extrabold text-slate-50 dark:text-slate-950 bg-slate-950 dark:bg-slate-50"
       >
         <span className="text-xl">⌘</span>
         <span className="text-sm">+</span>
@@ -146,7 +146,7 @@ export function CommandDialog() {
           <CommandEmpty>{t('search-empty')}</CommandEmpty>
           {groups.map((group) => (
             <CommandGroup key={group.heading} heading={group.heading}>
-              {group.actions.map((action) => (
+              {group.items.map((action) => (
                 <CommandItem key={action.name} onSelect={action.onSelect}>
                   {action.icon}
                   {action.name}
