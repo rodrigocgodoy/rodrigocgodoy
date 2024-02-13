@@ -14,7 +14,7 @@ export default function Home({
   unstable_setRequestLocale(locale)
 
   return (
-    <main className="flex flex-col gap-10 min-h-screen h-full mx-auto my-20 max-w-2xl px-6">
+    <main className="flex flex-col gap-16 min-h-screen h-full mx-auto my-20 max-w-2xl px-6">
       <Intro />
       <About />
       <Stack />
