@@ -62,10 +62,8 @@ export async function generateMetadata({
     )
 
     const {
-      data: { title, description },
+      data: { title, description, ogImage },
     } = matter(markdownWithMeta)
-
-    const ogImage = '/logo.jpg'
 
     return {
       title,
