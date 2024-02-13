@@ -36,7 +36,7 @@ export default function LocaleLayout({
       suppressHydrationWarning
     >
       <head />
-      <body className="bg-slate-50 dark:bg-zinc-950 text-zinc-950 dark:text-slate-50 h-screen">
+      <body className="bg-slate-50 dark:bg-zinc-950 text-zinc-950 dark:text-slate-50 h-screen antialiased">
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider
             attribute="class"
