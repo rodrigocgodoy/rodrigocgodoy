@@ -36,7 +36,6 @@ interface Group {
 export function CommandDialog() {
   const [open, setOpen] = React.useState(false)
   const { setTheme } = useTheme()
-
   const router = useRouter()
   const pathname = usePathname()
   const t = useTranslations('command')
