@@ -7,11 +7,13 @@ import { GeistSans } from 'geist/font/sans'
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
+import { draftMode } from 'next/headers'
 
 import { ThemeProvider } from '@/components/theme-provider'
 import { CommandDialog } from '@/components/command-dialog'
 import { Footer } from '@/components/footer'
 import { Toaster } from '@/components/ui/sonner'
+import { Draft } from '@/components/draft'
 
 export const metadata: Metadata = {
   title: 'Rodrigo Godoy',
@@ -49,6 +51,7 @@ export default function LocaleLayout({
             enableSystem
             disableTransitionOnChange
           >
+            <Draft draftMode={draftMode().isEnabled} />
             {children}
             <Footer />
 
