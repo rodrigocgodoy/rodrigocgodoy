@@ -1,13 +1,13 @@
 // eslint-disable-next-line camelcase
 import { unstable_setRequestLocale } from 'next-intl/server'
 import { format } from 'date-fns'
-import matter from 'gray-matter'
-import { marked } from 'marked'
+import { documentToReactComponents as renderRichText } from '@contentful/rich-text-react-renderer'
+import { draftMode } from 'next/headers'
 import { Metadata } from 'next'
-import path from 'path'
-import fs from 'fs'
 
 import { BackArrow } from '@/components/backArrow'
+import { Project, contentfulClient, parseContentfulProject } from '@/lib/cms'
+import { TypeProjectSkeleton } from '@/contentful/types'
 
 export default async function Project({
   params: { locale, slug },
@@ -15,11 +15,13 @@ export default async function Project({
   params: { locale: string; slug: string }
 }>) {
   unstable_setRequestLocale(locale)
-  const data = await getData({ locale, slug })
+  const data = await getData({ locale, slug, preview: draftMode().isEnabled })
 
   if (!data) {
     return (
-      <main className="flex flex-col gap-3 min-h-screen h-full mx-auto my-20 max-w-2xl px-6">
+      <main className="flex flex-col items-start mx-auto my-20 max-w-2xl px-6">
+        <BackArrow />
+
         <div>
           <h1>Project Not Found</h1>
         </div>
@@ -27,25 +29,20 @@ export default async function Project({
     )
   }
 
-  const { title, startDate, endDate, content } = data
-
   return (
     <main className="flex flex-col items-start mx-auto my-20 max-w-2xl px-6">
       <BackArrow />
       <h1 className="text-xl m-0 font-medium text-gray-950 dark:text-gray-50">
-        {title}
+        {data.title}
       </h1>
       <span className="text-sm text-gray-950 dark:text-gray-400">
-        {format(new Date(startDate), 'MMMM/yyyy')}
+        {format(new Date(data.startDate), 'MMMM/yyyy')}
         {' - '}
-        {endDate === 'current'
+        {!data.hasEndDate
           ? 'Até o momento'
-          : format(new Date(endDate), 'MMMM/yyyy')}
+          : format(new Date(data.endDate!), 'MMMM/yyyy')}
       </span>
-      <div
-        className="mt-10"
-        dangerouslySetInnerHTML={{ __html: marked.parse(content) }}
-      />
+      <div className="rich-text-contentful">{renderRichText(data.content)}</div>
     </main>
   )
 }
@@ -56,36 +53,47 @@ export async function generateMetadata({
   params: { locale: string; slug: string }
 }): Promise<Metadata> {
   try {
-    const markdownWithMeta = fs.readFileSync(
-      path.join('src/data/projects/' + slug + `/${locale}.mdx`),
-      'utf-8',
-    )
+    const client = contentfulClient({ preview: draftMode().isEnabled })
 
-    const {
-      data: { title, description, ogImage },
-    } = matter(markdownWithMeta)
+    const { items } = await client.getEntries<TypeProjectSkeleton>({
+      locale,
+      'fields.slug': slug,
+      content_type: 'project',
+      include: 2,
+    })
+
+    const data = parseContentfulProject(items[0])
+
+    if (data) {
+      const { title, resume, ogImage } = data
+
+      return {
+        title,
+        description: resume,
+        openGraph: {
+          siteName: title,
+          title,
+          description: resume,
+          url: '',
+          type: 'website',
+          images: [
+            {
+              url: ogImage,
+            },
+          ],
+        },
+        twitter: {
+          card: 'summary_large_image',
+          site: '@site',
+          creator: '@rodrigogodoy__',
+          images: [{ url: ogImage }],
+        },
+      }
+    }
 
     return {
-      title,
-      description,
-      openGraph: {
-        siteName: title,
-        title,
-        description,
-        url: '',
-        type: 'website',
-        images: [
-          {
-            url: ogImage,
-          },
-        ],
-      },
-      twitter: {
-        card: 'summary_large_image',
-        site: '@site',
-        creator: '@rodrigogodoy__',
-        images: [{ url: ogImage }],
-      },
+      title: 'Project Not Found',
+      robots: 'noindex,nofollow',
     }
   } catch (error) {
     console.error(error)
@@ -99,35 +107,25 @@ export async function generateMetadata({
 interface GetDataProps {
   slug: string
   locale: string
+  preview: boolean
 }
 
-interface GetDataReturn {
-  title: string
-  startDate: string
-  endDate: string
-  content: string
-}
-
-async function getData({
-  slug,
-  locale,
-}: GetDataProps): Promise<GetDataReturn | null> {
+async function getData({ slug, locale, preview }: GetDataProps) {
   try {
-    const markdownWithMeta = fs.readFileSync(
-      path.join('src/data/projects/' + slug + `/${locale}.mdx`),
-      'utf-8',
-    )
+    const client = contentfulClient({ preview })
 
-    const { data: frontmatter, content } = matter(markdownWithMeta)
+    const {
+      items: [data],
+    } = await client.getEntries<TypeProjectSkeleton>({
+      locale,
+      'fields.slug': slug,
+      content_type: 'project',
+      include: 2,
+    })
 
-    console.log(content)
+    console.log(parseContentfulProject(data))
 
-    return {
-      title: frontmatter.title,
-      startDate: frontmatter.startDate,
-      endDate: frontmatter.endDate,
-      content,
-    }
+    return parseContentfulProject(data) || null
   } catch (error) {
     console.error(error)
     return null
@@ -135,15 +133,26 @@ async function getData({
 }
 
 export async function generateStaticParams() {
-  const locales = ['pt', 'en']
-  const dirnames = fs.readdirSync(path.join('src/data/projects'))
-  const pathsArray = [] as unknown[]
+  const locales = ['pt-BR', 'en']
 
-  dirnames.map((dirname) => {
-    return locales.map((language) => {
-      return pathsArray.push({ params: { slug: dirname, locale: language } })
+  try {
+    const client = contentfulClient({ preview: true })
+    const data = await client.getEntries<TypeProjectSkeleton>({
+      locale: 'pt-BR',
+      content_type: 'project',
     })
-  })
 
-  return pathsArray
+    const dataFormatted = data.items?.map(
+      (item) => parseContentfulProject(item) as Project,
+    )
+
+    return dataFormatted.map((item) => {
+      return locales.map((locale) => {
+        return { params: { slug: item.slug, locale } }
+      })
+    })
+  } catch (error) {
+    console.error(error)
+    return []
+  }
 }
