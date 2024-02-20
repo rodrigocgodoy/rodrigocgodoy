@@ -1,3 +1,5 @@
+import '../../styles/globals.css'
+
 import { NextIntlClientProvider, useMessages } from 'next-intl'
 // eslint-disable-next-line camelcase
 import { unstable_setRequestLocale } from 'next-intl/server'
@@ -36,7 +38,10 @@ export default function LocaleLayout({
       suppressHydrationWarning
     >
       <head />
-      <body className="bg-slate-50 dark:bg-zinc-950 text-zinc-950 dark:text-slate-50 antialiased">
+      <body
+        className="bg-slate-50 dark:bg-zinc-950 text-zinc-950 dark:text-slate-50 antialiased"
+        suppressHydrationWarning
+      >
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ThemeProvider
             attribute="class"
