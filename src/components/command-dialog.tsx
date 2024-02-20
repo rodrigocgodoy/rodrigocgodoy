@@ -68,7 +68,7 @@ export function CommandDialog() {
         {
           name: t('language-pt'),
           icon: <GlobeIcon />,
-          onSelect: () => router.replace(pathname, { locale: 'pt' }),
+          onSelect: () => router.replace(pathname, { locale: 'pt-BR' }),
         },
       ],
     },
